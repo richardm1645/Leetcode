@@ -38,6 +38,22 @@ const makeCase = function(string, format) {
       let splitStr = string.split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join('');
       string = splitStr;
     }
+
+    //snake case
+    else if(format === 'snake' || format.includes('snake')) {
+
+      //Replaces every whitespace with an underscore
+      let splitStr = string.replace(/\s+/g, '_').toLowerCase();
+      string = splitStr;
+    }
+
+    //kebab case
+    else if(format === 'kebab' || format.includes('kebab')) {
+
+      //Replaces every whitespace with a hyphen
+      let splitStr = string.replace(/\s+/g, '-').toLowerCase();
+      string = splitStr;
+    }
   }
   return string;
 }
@@ -45,3 +61,5 @@ const makeCase = function(string, format) {
 
 console.log(makeCase("this is a string", "camel"));
 console.log(makeCase("this is a string", "pascal"));
+console.log(makeCase("this is a string", "snake"));
+console.log(makeCase("this is a string", "kebab"));
