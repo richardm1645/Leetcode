@@ -29,6 +29,14 @@ const makeCase = function(string, format) {
       //splits str per word, capitalizes the first letter of each word after the first index, the rejoins the array
       let splitStr = string.split(" ").map((word, index) => index === 0 ? word : word.charAt(0).toUpperCase() + word.slice(1)).join('');
       string = splitStr;
+    } 
+    
+    //pascal case
+    else if(format === 'pascal' || format.includes('pascal')) {
+
+      //splits str per word, capitalizes the first letter of each word after the first index, the rejoins the array
+      let splitStr = string.split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join('');
+      string = splitStr;
     }
   }
   return string;
@@ -36,3 +44,4 @@ const makeCase = function(string, format) {
 
 
 console.log(makeCase("this is a string", "camel"));
+console.log(makeCase("this is a string", "pascal"));
