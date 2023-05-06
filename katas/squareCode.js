@@ -20,10 +20,34 @@ Output: imtgvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn sseoau
 */
 
 const squareCode = function(message) {
-  // Put your solution here
+  const joinedStr = message.replace(/\s+/g, '');
+  const numOfChar = Math.ceil(Math.sqrt(joinedStr.length))
+  let squaredStr = '';
+  let codedStr = '';
+
+  //converts the joined string into a square shape
+  for (i = 0; i < joinedStr.length; i++) {
+    if (i > 0 && i % numOfChar === 0) { 
+      squaredStr += " ";
+    }
+    squaredStr += joinedStr.charAt(i);
+  }
+
+  //Create an array of all the blocks in the square
+  const squaredArray = squaredStr.split(" ");
+
+  for (let j = 0; j < squaredArray[0].length; j++) {
+    for (let k = 0; k < squaredArray.length; k++) {
+      if (squaredArray[0].length % codedStr.length === 0) { 
+        codedStr += " ";
+      }
+      codedStr += squaredArray[k].charAt(j);
+    }
+  }
+  return codedStr.trim();
 };
 
 console.log(squareCode("chill out"));
-console.log(squareCode("feed the dog"));
-console.log(squareCode("have a nice day"));
-console.log(squareCode("if man was meant to stay on the ground god would have given us roots"));
+// console.log(squareCode("feed the dog"));
+// console.log(squareCode("have a nice day"));
+// console.log(squareCode("if man was meant to stay on the ground god would have given us roots"));
