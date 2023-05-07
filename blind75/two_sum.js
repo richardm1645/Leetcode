@@ -16,3 +16,29 @@ Examples:
   Input: nums = [2,7,11,15], target = 9
   Output: [0,1]
 */
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+const twoSum = function(nums, target) {
+
+  //Saves values that are not the needed values in an object
+  const previousValues = {};
+
+  for (let i = 0; i < nums.length; i++) {
+
+    console.log(previousValues)
+    const currentNum = nums[i];
+    const neededValue = target - currentNum;
+    const index2 = previousValues[neededValue]
+    if (index2 != null) {
+      return [index2, i];
+    } else {
+      previousValues[currentNum] = i
+    }
+  }
+};
+
+console.log(twoSum([2,7,11,15], 9))
