@@ -21,5 +21,28 @@ Explanation: In this case, no transactions are done and the max profit = 0.
  */
 
 var maxProfit = function(prices) {
+
+  //Set the highest sell price (so far) to the last index in array
+  let salePrice = prices[prices.length - 1];
+  let profit = 0;
+
+  //Loop from the end of array
+  for (let i = prices.length - 1; i >= 0; i--) {
     
+    //if the current index has a higher price than previously stored, set the new sale price
+    if (prices[i] > salePrice) {
+      salePrice = prices[i];
+    }
+
+    //if the profit is less than the highest sale price minus the current index, set it to the current margin to make it higher.
+    if (profit < (salePrice - prices[i])) {
+      profit = (salePrice - prices[i]);
+    }
+  }
+
+  //returns 0 if there are no profitable stocks
+  return profit;
 };
+
+console.log(maxProfit([7,8,1,5,3,6,4]));
+console.log(maxProfit([7,6,4,3,1]));
